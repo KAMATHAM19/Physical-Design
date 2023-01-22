@@ -1,13 +1,13 @@
 # Physical Design using OpenLANE/Sky130
 this repo contains of physical design
 
-# Contents
+### Contents
 
 # 1 – Inception of open-source EDA, OpenLANE and Sky130 PDK
-       How to talk to computers
-       SoC design and OpenLANE
-       Starting RISC-V SoC Reference design
-       Get familiar to open-source EDA tools
+      . How to talk to computers
+      . SoC design and OpenLANE
+      . Starting RISC-V SoC Reference design
+      . Get familiar to open-source EDA tools
 # 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
       Chip Floor planning considerations
       Library Binding and Placement
@@ -25,3 +25,5 @@ this repo contains of physical design
 # 5 - Final steps for RTL2GDS
       Routing and design rule check (DRC)
       PNR interactive flow tutorial
+      
+
