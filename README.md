@@ -63,3 +63,4 @@ Google and SkyWater Technology Foundry in collaboration have released a complete
 # 1 – Inception of open-source EDA, OpenLANE and Sky130 PDK  
 
 
+
