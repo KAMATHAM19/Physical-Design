@@ -48,16 +48,17 @@ All the steps are further discussed in details in the repository.
 Google and SkyWater Technology Foundry in collaboration have released a completely open-source Process Design Kit(PDK) in May, 2020. The current release target to a SKY130 (i.e. 130 nm) process node is available as SkyWater Open Source PDK. The PDK provides Physical VLSI Designer with a wide range of flexibility in design choices. All the designs and simulations listed in this repository are carried out using the same SkyWater Open Source PDK.
 
 # Tools Used
+| tools | usage |
+| --- | --- |
+| Yosys | 	Synthesis of RTL Design|
+| ABC	 | Mapping of Netlist|
+| OpenSTA |	Static Timing Analysis 
+|OpenROAD |	Floorplanning, Placement, CTS, Optimization, Routing |
+| TritonRoute |	Detailed Routing |
+| Magic VLSI |	Layout Tool |
+| NGSPICE	SPICE | Extraction and Simulation |
+ | SPEF_EXTRACTOR | Generation of SPEF file from DEF file |
 
-     | Name of Tool| Application / Usage|
-     | Yosys|Synthesis of RTL Design|
-     | ABC|Mapping of Netlist|
-     |OpenSTA| Static Timing Analysis|
-     |OpenROAD|Floorplanning, Placement, CTS, Optimization, Routing|
-     |TritonRoute|Detailed Routing|
-     |Magic VLSI|Layout Tool|
-     |NGSPICE|SPICE Extraction and Simulation|
-     |SPEF_EXTRACTOR|Generation of SPEF file from DEF file|
 
 # 1 – Inception of open-source EDA, OpenLANE and Sky130 PDK  
 
