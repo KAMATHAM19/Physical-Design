@@ -63,13 +63,23 @@ Google and SkyWater Technology Foundry in collaboration have released a complete
 # 1 – Inception of open-source EDA, OpenLANE and Sky130 PDK 
 
 
+<img width="960" alt="1 1" src="https://user-images.githubusercontent.com/64173714/214944909-255ca00a-78aa-43cc-98f8-6c701c297ad7.png">
 
-<img width="960" alt="lab 1" src="https://user-images.githubusercontent.com/64173714/214673628-d8f8e7b7-c638-4833-b3ac-6ad0c793c639.png">
 
-<img width="458" alt="lab 1  1" src="https://user-images.githubusercontent.com/64173714/214673669-05b7112b-ddaf-47fb-81a4-39e4917e16ca.png">
-<img width="959" alt="1 2" src="https://user-images.githubusercontent.com/64173714/214673700-8e9ab512-a11b-428e-8169-05f8d97b4c4e.png">
 
-<img width="960" alt="1 3" src="https://user-images.githubusercontent.com/64173714/214673949-2d416be3-2280-4ebd-953a-31d4bb11cac8.png">
-<img width="960" alt="1 4" src="https://user-images.githubusercontent.com/64173714/214673962-1a1e02ff-d534-4bb8-a922-c2a7bfd58ee1.png">
-<img width="959" alt="1 5" src="https://user-images.githubusercontent.com/64173714/214673975-e57c5396-09e8-419d-9548-34ee52337fd9.png">
-<img width="960" alt="1 6" src="https://user-images.githubusercontent.com/64173714/214674002-0db7714f-e20d-4f27-9e84-5912baf3c0da.png">
+<img width="464" alt="1 2" src="https://user-images.githubusercontent.com/64173714/214944959-57131442-6928-4999-a67c-d5a54a985c91.png">
+
+
+<img width="960" alt="1 3" src="https://user-images.githubusercontent.com/64173714/214944999-fd01574b-d9a6-4af4-9692-bed7e52e4a49.png">
+
+
+<img width="960" alt="1 4 1" src="https://user-images.githubusercontent.com/64173714/214945822-4241db5d-b2e2-413e-b7ff-56cb99b32081.png">
+<img width="394" alt="1 4 2" src="https://user-images.githubusercontent.com/64173714/214945868-880c6d5e-ed5e-40a2-a3a2-82a912e7aa4c.png">
+
+<img width="960" alt="1 4 3" src="https://user-images.githubusercontent.com/64173714/214946115-dff3b1f8-dee3-4e51-b5ba-3365aac25eef.png">
+
+1.5.1 - edit
+
+
+<img width="347" alt="1 5" src="https://user-images.githubusercontent.com/64173714/214946138-df3423c3-9568-463a-85a7-4040dcf9cdbf.png">
+
