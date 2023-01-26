@@ -83,3 +83,5 @@ Google and SkyWater Technology Foundry in collaboration have released a complete
 
 <img width="347" alt="1 5" src="https://user-images.githubusercontent.com/64173714/214946138-df3423c3-9568-463a-85a7-4040dcf9cdbf.png">
 
+# 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
+
