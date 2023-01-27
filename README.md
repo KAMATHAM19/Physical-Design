@@ -95,3 +95,6 @@ Google and SkyWater Technology Foundry in collaboration have released a complete
 ```
 ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/27-01_19-20/results/placement$ magic -T /Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read  picorv32a.placement.def &
 ```
+
+
+<img width="958" alt="placement" src="https://user-images.githubusercontent.com/64173714/215221541-9047ff54-88c2-470c-adca-19c21c491b32.png">
