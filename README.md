@@ -85,3 +85,8 @@ Google and SkyWater Technology Foundry in collaboration have released a complete
 
 # 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
 
+
+
+```
+~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/27-01_19-20/results/floorplan$ magic -T /Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+```
