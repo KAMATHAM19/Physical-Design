@@ -138,4 +138,5 @@ L0 - ioPlacer - to changes I/O pins and place around the core
 git clone https://github.com/nickson-jose/vsdstdcelldesign.git
 
 ```
+cp sky130A.tech /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/
 
