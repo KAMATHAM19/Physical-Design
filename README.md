@@ -113,4 +113,7 @@ magic -T /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/pdks/sk
 
 <img width="956" alt="placement" src="https://user-images.githubusercontent.com/64173714/215261639-6099a3f9-0480-434b-ae2f-da66f1ac7be9.png">
 
+# 3 - Design and characterize one library cell using Magic Layout tool and ngspice
+
+
 
