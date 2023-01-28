@@ -1,12 +1,12 @@
 # Physical Design using OpenLANE/Sky130
  This repository contains all the information studied and created during the [Advanced Physical Design Using OpenLANE / SKY130 workshop](https://www.vlsisystemdesign.com/advanced-physical-design-using-openlane-sky130/). It is primarily foucused on a complete RTL2GDS flow using the open-soucre flow named OpenLANE. [PICORV32A](https://github.com/YosysHQ/picorv32) RISC-V core design is used for the purpose.
 # Table of Contents
-* [Introduction To RTL to GDSII Flow]()
+* [Introduction To RTL to GDSII Flow](#introduction-to-rtl-to-gdsii-flow)
 * [About Google SkyWater PDK]()
 * [Tools Used]()
 * [1 – Inception of open-source EDA, OpenLANE and Sky130 PDK]()
  * [How to talk to computers]()
-       [SoC design and OpenLANE]()
+      - [SoC design and OpenLANE]()
        [Starting RISC-V SoC Reference design]()
        [Get familiar to open-source EDA tools]()
 * [2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells]()
@@ -28,7 +28,7 @@
       [PNR interactive flow tutorial]()
 * [Refrences]()
 * [Acknowledgement]()
-
+<a name="introduction-to-rtl-to-gdsii-flow"></a>
 # Introduction To RTL to GDSII Flow
 
 RTL to GDSII Flow refers to the all the steps involved in converting a logical Register Transfer Level(RTL) Design to a fabrication ready GDSII format. GDSII is a database file format which is an industry standard for data exchange of IC layout artwork. The RTL to GSDII flow consists of following steps:
