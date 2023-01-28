@@ -166,8 +166,8 @@ i* SPICE3 file created from sky130_inv.ext - technology: sky130A
 .include ./libs/nshort.lib
 
 //.subckt sky130_inv A Y VPWR VGND
-M0 Y A VGND VGND pshort ad=1443 pd=152 as=1517 ps=156 w=37 l=23
-X1 Y A VPWR VPWR nshort ad=1435 pd=152 as=1365 ps=148 w=35 l=23
+M1000 Y A VGND VGND pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=37 l=23
+M1001 Y A VPWR VPWR nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
 VDD VPWR 0 3.3V
 VSS VGND 0 0V
 Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
@@ -184,4 +184,5 @@ C4 VPWR 0 0.59fF
 run
 .endc
 .end
+    
 ```
