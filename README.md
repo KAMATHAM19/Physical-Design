@@ -132,3 +132,5 @@ L0 - ioPlacer - to changes I/O pins and place around the core
 ```
 
 
+<img width="960" alt="reset" src="https://user-images.githubusercontent.com/64173714/215265586-4619331d-3f95-4573-9765-2c9d07226e55.png">
+
