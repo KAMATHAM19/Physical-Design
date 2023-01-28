@@ -93,7 +93,8 @@ Google and SkyWater Technology Foundry in collaboration have released a complete
 magic -T /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 
 ```
-<img width="959" alt="magic" src="https://user-images.githubusercontent.com/64173714/215211997-84becccc-887b-4875-bbdf-2714e85544c4.png">
+
+<img width="959" alt="magic" src="https://user-images.githubusercontent.com/64173714/215261151-64df2adf-2cbd-45a1-8988-626328ad414e.png">
 
 ```
 ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/27-01_19-20/results/placement$ magic -T /Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read  picorv32a.placement.def &
