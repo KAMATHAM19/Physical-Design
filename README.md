@@ -200,3 +200,8 @@ run
 
 
 <img width="960" alt="t" src="https://user-images.githubusercontent.com/64173714/215286642-0a0bdfcf-2078-4b72-9234-6d7afe3d4a7e.png">
+
+# 4 - Pre-layout timing analysis and importance of good clock tree
+
+~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ cd ../../pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/
+
