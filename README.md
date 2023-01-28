@@ -125,8 +125,10 @@ magic -T /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/pdks/sk
 
 L0 - ioPlacer - to changes I/O pins and place around the core
 
+```
 % set ::env(FP_IO_MODE) 2
 2
 % run_floorplan
+```
 
 
