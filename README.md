@@ -86,6 +86,10 @@ Google and SkyWater Technology Foundry in collaboration have released a complete
 
 # 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
 
+command
+<img width="953" alt="2 1" src="https://user-images.githubusercontent.com/64173714/215262087-ce4be0c1-be55-4835-9bb3-f12ae759249d.png">
+
+
 ```
  magic -T <location of techfile> lef read <loction of lef file> def read <location of floorplan def file>
  ```
@@ -98,6 +102,10 @@ magic -T /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/pdks/sk
 ```
 
 <img width="959" alt="magic" src="https://user-images.githubusercontent.com/64173714/215261151-64df2adf-2cbd-45a1-8988-626328ad414e.png">
+
+command
+<img width="960" alt="p1" src="https://user-images.githubusercontent.com/64173714/215262016-617f0a68-ae1b-4670-8428-8e6e46931cc3.png">
+
 
 ```
  magic -T <location of techfile> lef read <loction of lef file> def read <location of placement def file>
