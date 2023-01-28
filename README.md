@@ -100,6 +100,11 @@ magic -T /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/pdks/sk
 <img width="959" alt="magic" src="https://user-images.githubusercontent.com/64173714/215261151-64df2adf-2cbd-45a1-8988-626328ad414e.png">
 
 ```
+ magic -T <location of techfile> lef read <loction of lef file> def read <location of placement def file>
+ 
+```
+
+```
 ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/27-01_19-20/results/placement$
 
 magic -T /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
