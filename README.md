@@ -66,15 +66,16 @@ Google and SkyWater Technology Foundry in collaboration have released a complete
 <img width="960" alt="1 1" src="https://user-images.githubusercontent.com/64173714/214944909-255ca00a-78aa-43cc-98f8-6c701c297ad7.png">
 
 
+<img width="960" alt="1 2" src="https://user-images.githubusercontent.com/64173714/215261326-176160e1-e1c7-4dae-98eb-cb6686d01e46.png">
 
-<img width="464" alt="1 2" src="https://user-images.githubusercontent.com/64173714/214944959-57131442-6928-4999-a67c-d5a54a985c91.png">
+
 
 
 <img width="960" alt="1 3" src="https://user-images.githubusercontent.com/64173714/214944999-fd01574b-d9a6-4af4-9692-bed7e52e4a49.png">
 
 
-<img width="960" alt="1 4 1" src="https://user-images.githubusercontent.com/64173714/214945822-4241db5d-b2e2-413e-b7ff-56cb99b32081.png">
-<img width="394" alt="1 4 2" src="https://user-images.githubusercontent.com/64173714/214945868-880c6d5e-ed5e-40a2-a3a2-82a912e7aa4c.png">
+<img width="960" alt="1 4 1" src="https://user-images.githubusercontent.com/64173714/214945822-4241db5d-b2e2-413e-b7ff-56cb99b32081.png"> - <img width="960" alt="1 4 2" src="https://user-images.githubusercontent.com/64173714/215261392-a170e3bf-30e5-43b1-9892-70e30dd15024.png">
+
 
 <img width="960" alt="1 4 3" src="https://user-images.githubusercontent.com/64173714/214946115-dff3b1f8-dee3-4e51-b5ba-3365aac25eef.png">
 
