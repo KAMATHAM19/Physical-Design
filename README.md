@@ -5,7 +5,7 @@
 * [About Google SkyWater PDK]()
 * [Tools Used]()
 * [1 – Inception of open-source EDA, OpenLANE and Sky130 PDK]()
-       [How to talk to computers]()
+ * [How to talk to computers]()
        [SoC design and OpenLANE]()
        [Starting RISC-V SoC Reference design]()
        [Get familiar to open-source EDA tools]()
