@@ -146,6 +146,6 @@ cp sky130A.tech /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/
 <img width="956" alt="image" src="https://user-images.githubusercontent.com/64173714/215268906-9ec922be-924e-447f-8758-a8d5eb418157.png">
 
 16 mask process 
-``` (https://www.vlsisystemdesign.com/wp-content/uploads/2017/07/16-mask-process.pdf)  ```
+``` [](https://www.vlsisystemdesign.com/wp-content/uploads/2017/07/16-mask-process.pdf)  ```
 
 
