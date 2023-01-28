@@ -157,3 +157,31 @@ cp sky130A.tech /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/
 <img width="960" alt="3 4" src="https://user-images.githubusercontent.com/64173714/215278218-907c745b-a97a-4d7c-add9-a114193a6694.png">
 
 <img width="960" alt="spice 1" src="https://user-images.githubusercontent.com/64173714/215278228-8ab8f44d-e61c-4da2-8699-f3011548a675.png">
+
+```
+i* SPICE3 file created from sky130_inv.ext - technology: sky130A
+
+.option scale=0.01u
+.include ./libs/pshort.lib
+.include ./libs/nshort.lib
+
+//.subckt sky130_inv A Y VPWR VGND
+M0 Y A VGND VGND pshort ad=1443 pd=152 as=1517 ps=156 w=37 l=23
+X1 Y A VPWR VPWR nshort ad=1435 pd=152 as=1365 ps=148 w=35 l=23
+VDD VPWR 0 3.3V
+VSS VGND 0 0V
+Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+C0 A Y 0.05fF
+C1 Y VPWR 0.11fF
+C2 A VPWR 0.07fF
+C3 Y 0 0.24fF
+C4 VPWR 0 0.59fF
+// .ends
+
+.tran 1n 20n
+
+.control
+run
+.endc
+.end
+```
