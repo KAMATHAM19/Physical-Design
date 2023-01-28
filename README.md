@@ -164,31 +164,39 @@ cp sky130A.tech /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/
 
 <img width="960" alt="spice 1" src="https://user-images.githubusercontent.com/64173714/215278228-8ab8f44d-e61c-4da2-8699-f3011548a675.png">
 
+
 ```
-i* SPICE3 file created from sky130_inv.ext - technology: sky130A
+* SPICE3 file created from sky130_inv.ext - technology: sky130A
 
 .option scale=0.01u
 .include ./libs/pshort.lib
 .include ./libs/nshort.lib
 
-//.subckt sky130_inv A Y VPWR VGND
-M1000 Y A VGND VGND pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=37 l=23
-M1001 Y A VPWR VPWR nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
-VDD VPWR 0 3.3V
-VSS VGND 0 0V
+* .subckt sky130_inv A Y VPWR VGND
+M0 Y A VGND VGND nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
+M1 Y A VPWR VPWR pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=37 l=23
+C0 A VPWR 0.08fF
+C1 Y VPWR 0.08fF
+C2 A Y 0.02fF
+C3 Y VGND 0.18fF
+C4 VPWR VGND 0.74fF
+* .ends
+
+* Power supply 
+VDD VPWR 0 3.3V 
+VSS VGND 0 0V 
+
+* Input Signal
 Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
-C0 A Y 0.05fF
-C1 Y VPWR 0.11fF
-C2 A VPWR 0.07fF
-C3 Y 0 0.24fF
-C4 VPWR 0 0.59fF
-// .ends
 
+* Simulation Control
 .tran 1n 20n
-
 .control
 run
 .endc
 .end
-    
 ```
+<img width="960" alt="3 0" src="https://user-images.githubusercontent.com/64173714/215286609-f27e665b-6d2e-4769-bbc8-1af19275347c.png">
+
+
+<img width="960" alt="t" src="https://user-images.githubusercontent.com/64173714/215286642-0a0bdfcf-2078-4b72-9234-6d7afe3d4a7e.png">
