@@ -140,3 +140,9 @@ git clone https://github.com/nickson-jose/vsdstdcelldesign.git
 ```
 cp sky130A.tech /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/
 
+ magic -T sky130A.tech sky130_inv.mag &
+
+
+<img width="956" alt="image" src="https://user-images.githubusercontent.com/64173714/215268906-9ec922be-924e-447f-8758-a8d5eb418157.png">
+
+
