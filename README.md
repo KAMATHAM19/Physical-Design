@@ -272,3 +272,11 @@ report_wns
 sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8
 % echo $::env(CTS_ROOT_BUFFER)
 sky130_fd_sc_hd__clkbuf_16
+
+read_lef /openLANE_flow/designs/picorv32a/runs/my_run1/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/my_run1/results/cts/picorv32a.cts.def
+read_verilog /openLANE_flow/designs/picorv32a/runs/my_run1/results/synthesis/picorv32a.synthesis_cts.v
+ read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+report_checks -path_delay min_max -format full_clock_expanded -digits 4
+
+
