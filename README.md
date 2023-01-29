@@ -260,3 +260,15 @@ report_tns
 report_wns
 ```
 ~              
+% echo $::env(LIB_SYNTH_COMPLETE)
+/openLANE_flow/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib
+% echo $::env(LIB_TYPICAL)
+/openLANE_flow/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib
+% echo $::env(CURRENT_DEF)
+/openLANE_flow/designs/picorv32a/runs/my_run1/results/cts/picorv32a.cts.def
+% echo $::env(CTS_MAX_CAP)
+1.53169
+% echo $::env(CTS_CLK_BUFFER_LIST)
+sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8
+% echo $::env(CTS_ROOT_BUFFER)
+sky130_fd_sc_hd__clkbuf_16
