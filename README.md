@@ -247,3 +247,16 @@ source $filename
 <img width="951" alt="5 1" src="https://user-images.githubusercontent.com/64173714/215319500-f3e895e5-cb8c-4a45-ad82-c21ac34d86c9.png">
 
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/64173714/215330222-4e0922a0-9da9-40dc-b2bb-71f9f984efdb.png">
+
+set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um
+read_liberty -max /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/sky130_fd_sc_hd_slow.lib
+read_liberty -min /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/sky130_fd_sc_hd_fast.lib
+read_verilog /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/my_run1/results/synthesis/picor
+v32a.synthesis.v
+link_design picorv32a
+read_sdc /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/my_base.sdc
+report_checks -path_delay min_max -fields {slew trans net cap input_pin}
+report_tns
+report_wns
+~                                                                                                                                           
+~           
