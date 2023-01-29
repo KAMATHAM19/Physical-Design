@@ -238,3 +238,8 @@ set filename $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/$::env(PDK)_$::en
 if { [file exists $filename] == 1} {
 source $filename
 }
+```
+    set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+  
+    add_lefs -src $lefs 
+    ```
