@@ -242,5 +242,6 @@ source $filename
     set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
   
     add_lefs -src $lefs 
-    ```
-<img width="951" alt="5 1" src="https://user-images.githubusercontent.com/64173714/215319293-34998f8c-1647-463a-b116-d0f698844e94.png">
+```
+
+<img width="951" alt="5 1" src="https://user-images.githubusercontent.com/64173714/215319500-f3e895e5-cb8c-4a45-ad82-c21ac34d86c9.png">
