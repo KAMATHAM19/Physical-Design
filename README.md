@@ -438,14 +438,12 @@ since the openlane is new version it doesn't support `run_floorplan` command we 
   run_routing
 ```
 * Open the def file via magic
-* 
+ 
 <img width="944" alt="5 5" src="https://user-images.githubusercontent.com/64173714/215507673-812bf29b-787f-43ca-b309-20a950e69b6a.png">
 
 <img width="833" alt="5 6" src="https://user-images.githubusercontent.com/64173714/215507731-94531ee9-3635-4418-aa21-07a112a95191.png">
 
 <img width="956" alt="5 7" src="https://user-images.githubusercontent.com/64173714/215507913-56c041d2-7165-4693-9de0-a7f6b055886f.png">
-
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/64173714/215330222-4e0922a0-9da9-40dc-b2bb-71f9f984efdb.png">
 
 * Now, using the command, we perform a post-synthesis analysis in OpenSTA
 ```
@@ -455,4 +453,4 @@ since the openlane is new version it doesn't support `run_floorplan` command we 
 
 # Refrences
 * Kunal Ghosh - Co-founder of VSD 
-* Nickson Jose - Workshop Instructor OpenLANE-Sky130-Physical-Design-Workshop
+* Nickson Jose - Teaching Assistant 
