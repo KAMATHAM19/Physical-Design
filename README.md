@@ -30,7 +30,7 @@ During the [Advanced Physical Design workshop using OpenLANE and SKY130](https:/
 * 5 - Final steps for RTL2GDS
     - Routing and design rule check (DRC)
     -  PNR interactive flow tutorial
-* Refrences
+* Acknowledgement
 
 <a name="tools-used"></a>
 # Tools Used
@@ -451,6 +451,6 @@ since the openlane is new version it doesn't support `run_floorplan` command we 
 ```
 <img width="960" alt="5 9" src="https://user-images.githubusercontent.com/64173714/215510847-d229a2f2-45fd-46cb-a9e2-f0057411f95c.png">
 
-# Refrences
+# Acknowledgement
 * Kunal Ghosh - Co-founder of VSD 
-* Nickson Jose - Teaching Assistant 
+* Nickson Jose - Instructor
