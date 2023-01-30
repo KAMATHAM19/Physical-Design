@@ -325,6 +325,12 @@ run
    * I/p and O/p port must lies on the intersection of the vertical and horizontal tracks
    * Width oof the std cell should be in the odd ultiples of the track pitch
    * Height should be odd multiples of vertical track pitch
+   
+  * To run the previous flow follow this command
+ ```
+   prep -design picorv32a -tag
+ 
+ ```
  * In these directory `/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/` we can find tracks
  ```
  ~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ cd ../../pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/
@@ -363,9 +369,9 @@ The three guidelines are clearly shown in the illustration in this image
 * The prior command creates a.lef file. Now, use the following command to copy the lef file into the picrorv32a directory.
 ```
       cp <path to the file> <path to the target location>
-
 ```
-
+* Add the folowing to config.tcl inside the picorv32a
+```
 Design
 set ::env(DESIGN_NAME) "picorv32a"
 
@@ -391,13 +397,52 @@ if { [file exists $filename] == 1} {
 source $filename
 }
 ```
+* Connect the newly created lef file to the OpenLANE flow using
 ```
     set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
   
     add_lefs -src $lefs 
-```
 
+```
 <img width="951" alt="5 1" src="https://user-images.githubusercontent.com/64173714/215319500-f3e895e5-cb8c-4a45-ad82-c21ac34d86c9.png">
+
+<img width="947" alt="5 2" src="https://user-images.githubusercontent.com/64173714/215505144-b1013341-2dde-421d-99d0-c341b1ed6313.png">
+
+* run synthesis - `run_synthesis`
+* 
+<img width="960" alt="5 3" src="https://user-images.githubusercontent.com/64173714/215505008-c5f76b67-bd49-4f83-9936-966dc3f67656.png">
+
+* Change a few variables to reduce the negative slack. We will now change the variables "on the flight". To see the current value of the variables before changing them, use echo $::env(SYNTH STRATEGY):
+```
+% echo $::env(SYNTH_STRATEGY)
+AREA 0
+% set ::env(SYNTH_STRATEGY) 1
+% echo $::env(SYNTH_BUFFERING)
+1
+% echo $::env(SYNTH_SIZING)
+0
+% set ::env(SYNTH_SIZING) 1
+% echo $::env(SYNTH_DRIVING_CELL)
+sky130_fd_sc_hd__inv_8
+```
+* run floorplan
+since the openlane is new version it doesn't support `run_floorplan` command we need to use alternatives commands as follows
+```
+  init_floorplan
+  place_io
+  global_placement_or
+  detailed_placement
+  tap_decap_or
+  detailed_placement
+  gen_pdn
+  run_cts
+  run_routing
+```
+<img width="944" alt="5 5" src="https://user-images.githubusercontent.com/64173714/215507673-812bf29b-787f-43ca-b309-20a950e69b6a.png">
+
+<img width="833" alt="5 6" src="https://user-images.githubusercontent.com/64173714/215507731-94531ee9-3635-4418-aa21-07a112a95191.png">
+
+<img width="956" alt="5 7" src="https://user-images.githubusercontent.com/64173714/215507913-56c041d2-7165-4693-9de0-a7f6b055886f.png">
 
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/64173714/215330222-4e0922a0-9da9-40dc-b2bb-71f9f984efdb.png">
 
