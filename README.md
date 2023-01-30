@@ -297,15 +297,23 @@ run
 * Generate a graph using `plot y vs time a` 
 
 <img width="960" alt="3 0" src="https://user-images.githubusercontent.com/64173714/215286609-f27e665b-6d2e-4769-bbc8-1af19275347c.png">
-
-Using this transient response, we will now characterise the cell's slew rate and propagation delay
-
 <img width="960" alt="t" src="https://user-images.githubusercontent.com/64173714/215286642-0a0bdfcf-2078-4b72-9234-6d7afe3d4a7e.png">
+* From the transient response, we will now characterise the cell's slew rate and propagation delay
 
-
+   * rise transiton - time taken by output waveform to transit from 20%(0.66) to 80%(2.64) of VDD(3.3 max value) = 2.19945 - 2.15722 = 0.03728 ns
+   
 <img width="316" alt="rise" src="https://user-images.githubusercontent.com/64173714/215319377-e139cefc-a69f-4a70-96f1-9db85e05fc89.png">
+
+   * fall transition - time taken by output waveform to transit from 80% (2.64) to 20% (0.66) of VDD = 4.06716 - 4.0394 = 0.02766 ns
+   
 <img width="307" alt="fall transi" src="https://user-images.githubusercontent.com/64173714/215319388-8c9b7de9-1e7a-4ed1-8563-925744289767.png">
+
+   *  rise cell delay - The difference between the time when output as well as input is at 50% (1.65) i.e falling at 50% of output is rising = 2.18132 - 2.14945 = 0.03187 ns
+   
 <img width="308" alt="cell rise de" src="https://user-images.githubusercontent.com/64173714/215319395-2eac9a92-c094-4e40-bec6-e8fde0e86fb8.png">
+
+   *  fall cell delay - The difference between the time when output as well as input is at 50% (1.65) i.e falling at 50% of input is rising = 4.059292 - 4.04958 = 0.009712 ns 
+   
 <img width="277" alt="cll fall delay" src="https://user-images.githubusercontent.com/64173714/215319398-47e2f33e-82e5-4527-83cc-5721f3be5836.png">
 
 # 4 - Pre-layout timing analysis and importance of good clock tree
