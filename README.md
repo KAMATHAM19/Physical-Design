@@ -347,12 +347,25 @@ In the tkon terminal, use the grid command to compare the tracks' information
 
 <img width="960" alt="4 2" src="https://user-images.githubusercontent.com/64173714/215494843-c069b012-c948-4dd9-9164-d43678a4d5cc.png">
 
-The three guidelines are clearly shown in the illustration above
+The three guidelines are clearly shown in the illustration in this image
 
+<img width="958" alt="4 3" src="https://user-images.githubusercontent.com/64173714/215496521-f3f79ae8-e302-4155-8946-244049d897dd.png">
 
-
-error
+* The information from the .mag file will be extracted into a LEF file, which will contain essential details for placement and routing, such as cell dimensions, port information, and specific properties. The first step in creating the LEF file is to clearly define the port definitions, including the class and intended use of each port
+* Save the mag file and relaunch the magic tool. Then run the command below to create the lef file
 ```
+    lef write
+```
+<img width="960" alt="4 4" src="https://user-images.githubusercontent.com/64173714/215499686-c0f38477-bf00-46ad-be90-145cd216e0cb.png">
+
+<img width="960" alt="4 4 1" src="https://user-images.githubusercontent.com/64173714/215499715-a9e30d63-c15f-4df4-bcc4-010159a9972f.png">
+
+* The prior command creates a.lef file. Now, use the following command to copy the lef file into the picrorv32a directory.
+```
+      cp <path to the file> <path to the target location>
+
+```
+
 Design
 set ::env(DESIGN_NAME) "picorv32a"
 
