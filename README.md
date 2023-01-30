@@ -318,7 +318,38 @@ run
 
 # 4 - Pre-layout timing analysis and importance of good clock tree
 
-~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ cd ../../pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/
+## LAB
+
+* OpenLANE is a tool for place and route, which places cells in a design. When using this tool, the full information contained in the .mag file, which includes boundry,power and ground, logic, etc., is not necessary. Instead, only the essential information, such as the placement boundary, power and ground rails, and input and output ports, is required. This information is contained in lef files, which protect the IP(intellectual property). 
+* The goal is to extract the lef file from the .mag file and use it to replace the standard cells in the design. There are guidelines to follow when creating a standard cell set for use in place and route
+   * I/p and O/p port must lies on the intersection of the vertical and horizontal tracks
+   * Width oof the std cell should be in the odd ultiples of the track pitch
+   * Height should be odd multiples of vertical track pitch
+ * In these directory `/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/` we can find tracks
+ ```
+ ~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ cd ../../pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/
+ 
+ ```
+ * tpye command ` less tracks.info`
+ ```
+ less tracks.info
+ 
+ ```
+ <img width="956" alt="4 1" src="https://user-images.githubusercontent.com/64173714/215493780-f81c412d-a0eb-49a8-b4a7-ce6e5fd2cd34.png">
+ 
+ * open the layout from vsdstdcelldesign directory
+ 
+ ``` 
+    magic -T sky130.tech sky130_inv.mag
+ 
+ ```
+In the tkon terminal, use the grid command to compare the tracks' information
+
+<img width="960" alt="4 2" src="https://user-images.githubusercontent.com/64173714/215494843-c069b012-c948-4dd9-9164-d43678a4d5cc.png">
+
+The three guidelines are clearly shown in the illustration above
+
+
 
 error
 ```
