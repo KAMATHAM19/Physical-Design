@@ -1,10 +1,10 @@
 # Physical Design using OpenLANE/Sky130
- This repository contains all the information studied and created during the [Advanced Physical Design Using OpenLANE / SKY130 workshop](https://www.vlsisystemdesign.com/advanced-physical-design-using-openlane-sky130/). It is primarily foucused on a complete RTL2GDS flow using the open-soucre flow named OpenLANE. [PICORV32A](https://github.com/YosysHQ/picorv32) RISC-V core design is used for the purpose.
+
+During the [Advanced Physical Design workshop using OpenLANE and SKY130](https://www.vlsisystemdesign.com/advanced-physical-design-using-openlane-sky130/), I learned about the entire Physical Design process. This training focused on an RTL2GDSII flow using the open-source flow OpenLANE, with the [PICORV32A](https://github.com/YosysHQ/picorv32) RISC-V core design as an example. I learned about chip floorplanning, library cell design and characterization, pre-layout timing analysis, and the final steps of the RTL2GDSII flow.This repository contains all of the information and resources I have acquired during the workshop.
+
 # Table of Contents
-* [Introduction To RTL to GDSII Flow](#introduction-to-rtl-to-gdsii-flow)
-* [About Google SkyWater PDK](#about-google-skywater-pdk)
-* [Tools Used](#)
-* [1 – Inception of open-source EDA, OpenLANE and Sky130 PDK](#)
+* [Tools Used](#tools-used)
+* [1 – Inception of open-source EDA, OpenLANE and Sky130 PDK](#1-inception-of-open-source-eda-openlane-and-sky130-pdk)
    - [How to talk to computers](#)
    - [SoC design and OpenLANE](#)
    - [Starting RISC-V SoC Reference design](#)
@@ -29,65 +29,107 @@
 * [Refrences](#)
 * [Acknowledgement](#)
 
-<a name="introduction-to-rtl-to-gdsii-flow"></a>
-# Introduction To RTL to GDSII Flow
-
-RTL to GDSII Flow refers to the all the steps involved in converting a logical Register Transfer Level(RTL) Design to a fabrication ready GDSII format. GDSII is a database file format which is an industry standard for data exchange of IC layout artwork. The RTL to GSDII flow consists of following steps:
-
-* RTL Synthesis
-* Static Timing Analysis(STA)
-* Design for Testability(DFT)
-* Floorplanning
-* Placement
-* Clock Tree Synthesis(CTS)
-* Routing
-* GDSII Streaming
-
-All the steps are further discussed in details in the repository.
-
-<a name="about-google-skywater-pdk"></a>
-# About Google SkyWater PDK
-Google and SkyWater Technology Foundry in collaboration have released a completely open-source Process Design Kit(PDK) in May, 2020. The current release target to a SKY130 (i.e. 130 nm) process node is available as SkyWater Open Source PDK. The PDK provides Physical VLSI Designer with a wide range of flexibility in design choices. All the designs and simulations listed in this repository are carried out using the same SkyWater Open Source PDK.
-
-<a name="about-google-skywater-pdk"></a>
+<a name="tools-used"></a>
 # Tools Used
-| tools | usage |
+| Tool | Descriptions |
 | --- | --- |
 | Yosys | 	Synthesis of RTL Design|
 | ABC	 | Mapping of Netlist|
-| OpenSTA |	Static Timing Analysis 
-|OpenROAD |	Floorplanning, Placement, CTS, Optimization, Routing |
-| TritonRoute |	Detailed Routing |
+| OpenSTA |	Static Timing Analysis |
 | Magic VLSI |	Layout Tool |
 | NGSPICE	SPICE | Extraction and Simulation |
- | SPEF_EXTRACTOR | Generation of SPEF file from DEF file |
+|OpenROAD |	Floorplanning, Placement, CTS, Optimization, Routing |
+| TritonRoute |	Detailed Routing |
+| SPEF_EXTRACTOR | Generation of SPEF file from DEF file |
 
-<a name="about-google-skywater-pdk"></a>
+<a name="1-inception-of-open-source-eda-openlane-and-sky130-pdk"></a>
 # 1 – Inception of open-source EDA, OpenLANE and Sky130 PDK 
 
+In RTL2GDS physical design, there are various terms encountered. A few key terms are:
+
+<img width="541" alt="1" src="https://user-images.githubusercontent.com/64173714/215434903-d1b261d0-044d-4649-9502-4dba67ab1fe4.png">
+
+* Package: a material that houses the semiconductor device and protects it from damage. An example is QFN-48 (Quad Flat No-Leads) with 48 pins.
+* Chip: sits in the center of the package and connects to the package pins through wire bonding. It contains components like pad, core, interconnects, etc.
+* Pads: connect internal signals from the core of the IC to the external pins of the chip. They are organized as a Pad Frame and include input, output, power supply, and ground pads.
+* Die: the block of semiconducting material used to build functional circuits, the entire size of the chip. 
+* Core: contains all the logic units (gates, muxes, etc.) to execute instructions and produce output.
+The core can have two types of blocks: Foundry IP blocks (e.g. ADC, DAC, PLL, SRAM) designed by foundries, and Macro blocks (e.g. RISC-V SOC, SPI) pure digital logic blocks.
+
+
+<img width="535" alt="2" src="https://user-images.githubusercontent.com/64173714/215442738-27656f59-dc42-4fd5-8205-55c3e3e5c8c2.png">
+
+RISC-V (Reduced Instruction Set Computing) is an open-source Instruction Set Architecture (ISA) for computer processors. RISC-V provides a clean and simple ISA, allowing for efficient implementations of processors, while also providing flexibility for custom extensions. The open-source nature of RISC-V allows for easy collaboration and customization, enabling the development of diverse, specialized processors for a wide range of applications. This has led to a growing number of companies and institutions adopting RISC-V for their processors, contributing to its growing popularity and success.
+
+
+![IMG-8769](https://user-images.githubusercontent.com/64173714/215443267-3402518b-6809-4ca5-a753-1d2737d006da.jpg)
+
+When we run a program on a computer, it goes through several steps to become executable by the hardware. Firstly, the program written in a high level language (such as C) is compiled into assembly language, which is a representation of the program in a language that is specific to the hardware. The assembly language is then converted into machine language, which consists of binary code that can be executed by the hardware.
+
+The system software, which includes the Operating System (OS), Compiler, and Assembler, plays a crucial role in executing the program. The OS handles low-level functions such as input/output operations and memory management. The compiler compiles the program into assembly language, and the assembler then converts the assembly language into machine language. 
+
+Finally, the binary code is executed on the chip layout. The interface between the chip layout and the machine language is achieved through RTL (register transfer level) code. This code provides a description of the digital logic that is used to implement the desired behavior in hardware.
+
+<img width="593" alt="3" src="https://user-images.githubusercontent.com/64173714/215445891-5f004c86-c8c8-4ba8-bdce-976a7e8f7f68.png">
+
+To design a digital ASIC with open source, three open source components are needed: 
+* RTL Designs (found on github.com, librecores.org, and opencores.org)
+* EDA Tools (such as OpenROAD, OpenLANE, and QFlow), 
+* PDK (Process Design Kit) - The PDK is provided by Google and Skywater, and it is a 130nm Production PDK. The PDK acts as a bridge between the designer and the fab and contains important information such as cell libraries, IO libraries, and design rules (DRC, LVS, etc.).
+
+
+![IMG-8761](https://user-images.githubusercontent.com/64173714/215446489-bdfd9f74-92c4-40db-bb70-744d06a18289.jpg)
+
+In the process of digital ASIC design
+* Synthesis is the step where the RTL code is transformed into a gate level netlist composed of components from a standard cell library. 
+* Floor planning and power planning involves allocating the silicon area and creating a robust power distribution network. The power network often employs thicker upper metal layers to reduce resistance and IR drop problems.
+* Placement is a two-part process, starting with global placement to find the optimal positions for cells which may not be legal, followed by detailed placement to determine the actual legal positions of cells.
+* Clock tree synthesis is the distribution of clocks to all flip flops, often structured as a tree such as an H-tree or X-tree.
+* Routing involves connecting cells together using horizontal and vertical wires. The router uses information from the PDK such as thickness, pitch, width, and vias for each metal layer, with Sky130 defining 6 routing layers for both global and detailed routing.
+* Before sign-off, verification is crucial and includes physical verification such as DRC and LVS, and timing verification. Design Rule Checking (DRC) ensures the final layout complies with all design rules, Layout versus Schematic (LVS) checks if the final layout matches the gate level netlist from the synthesis phase, and timing verification confirms that timing constraints are met.
+
+![IMG-8762](https://user-images.githubusercontent.com/64173714/215446664-5d9da8cd-d538-4c7e-9585-98f393586e6d.jpg)
+
 <a name="about-google-skywater-pdk"></a>
+lLabs
+* Getting starting with working directory and openlane
+` cd work/tools/openlane_working_dir/openlane/ `
+* to invoke the tool type `docker` to start the docker containter
+
 <img width="960" alt="1 1" src="https://user-images.githubusercontent.com/64173714/214944909-255ca00a-78aa-43cc-98f8-6c701c297ad7.png">
 
+* Open the OpenLane in interactive mode `./flow.tcl -interactive` and Set the package required by OpenLane `package require openlane 0.9`
 
 <img width="960" alt="1 2" src="https://user-images.githubusercontent.com/64173714/215261326-176160e1-e1c7-4dae-98eb-cb6686d01e46.png">
 
-
-
+* select the design `cd designs/picorv32a`
 
 <img width="960" alt="1 3" src="https://user-images.githubusercontent.com/64173714/214944999-fd01574b-d9a6-4af4-9692-bed7e52e4a49.png">
 
+* Prepare the design `prep -design picorv32a`
 
-<img width="960" alt="1 4 1" src="https://user-images.githubusercontent.com/64173714/214945822-4241db5d-b2e2-413e-b7ff-56cb99b32081.png"> - <img width="960" alt="1 4 2" src="https://user-images.githubusercontent.com/64173714/215261392-a170e3bf-30e5-43b1-9892-70e30dd15024.png">
 
+<img width="960" alt="1 4 1" src="https://user-images.githubusercontent.com/64173714/214945822-4241db5d-b2e2-413e-b7ff-56cb99b32081.png"> 
+<img width="960" alt="1 4 2" src="https://user-images.githubusercontent.com/64173714/215261392-a170e3bf-30e5-43b1-9892-70e30dd15024.png">
+
+* checking whether a merged file is created in the folder
 
 <img width="960" alt="1 4 3" src="https://user-images.githubusercontent.com/64173714/214946115-dff3b1f8-dee3-4e51-b5ba-3365aac25eef.png">
 
 1.5.1 - edit
 
+* Run the synthesis `run_synthesis`
 
 <img width="347" alt="1 5" src="https://user-images.githubusercontent.com/64173714/214946138-df3423c3-9568-463a-85a7-4040dcf9cdbf.png">
 
+* View the synthesis statistics
 
+<img width="960" alt="1 5 1" src="https://user-images.githubusercontent.com/64173714/215454952-d39c22e8-8706-4853-8c1d-c35dd94a9e04.png">
+
+* To calculate the flop ratio 
+ ``` flop ration = no of d flip flops/total no of cells = 1613/18036 = 0.089 = 89% 
+ ```
+ 
 <a name="about-google-skywater-pdk"></a>
 # 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
 
