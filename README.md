@@ -31,7 +31,6 @@ During the [Advanced Physical Design workshop using OpenLANE and SKY130](https:/
     - Routing and design rule check (DRC)
     -  PNR interactive flow tutorial
 * Refrences
-* Acknowledgement
 
 <a name="tools-used"></a>
 # Tools Used
@@ -409,7 +408,7 @@ source $filename
 <img width="947" alt="5 2" src="https://user-images.githubusercontent.com/64173714/215505144-b1013341-2dde-421d-99d0-c341b1ed6313.png">
 
 * run synthesis - `run_synthesis`
-* 
+
 <img width="960" alt="5 3" src="https://user-images.githubusercontent.com/64173714/215505008-c5f76b67-bd49-4f83-9936-966dc3f67656.png">
 
 * Change a few variables to reduce the negative slack. We will now change the variables "on the flight". To see the current value of the variables before changing them, use echo $::env(SYNTH STRATEGY):
@@ -438,6 +437,8 @@ since the openlane is new version it doesn't support `run_floorplan` command we 
   run_cts
   run_routing
 ```
+* Open the def file via magic
+* 
 <img width="944" alt="5 5" src="https://user-images.githubusercontent.com/64173714/215507673-812bf29b-787f-43ca-b309-20a950e69b6a.png">
 
 <img width="833" alt="5 6" src="https://user-images.githubusercontent.com/64173714/215507731-94531ee9-3635-4418-aa21-07a112a95191.png">
@@ -446,35 +447,12 @@ since the openlane is new version it doesn't support `run_floorplan` command we 
 
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/64173714/215330222-4e0922a0-9da9-40dc-b2bb-71f9f984efdb.png">
 
+* Now, using the command, we perform a post-synthesis analysis in OpenSTA
 ```
-set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um
-read_liberty -max /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib
-read_liberty -min /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib
-read_verilog /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/my_run1/results/synthesis/picorv32a.synthesis.v
-link_design picorv32a
-read_sdc /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/my_base.sdc
-report_checks -path_delay min_max -fields {slew trans net cap input_pin}
-report_tns
-report_wns
+  sta pre_sta.conf
 ```
-~              
-% echo $::env(LIB_SYNTH_COMPLETE)
-/openLANE_flow/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib
-% echo $::env(LIB_TYPICAL)
-/openLANE_flow/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib
-% echo $::env(CURRENT_DEF)
-/openLANE_flow/designs/picorv32a/runs/my_run1/results/cts/picorv32a.cts.def
-% echo $::env(CTS_MAX_CAP)
-1.53169
-% echo $::env(CTS_CLK_BUFFER_LIST)
-sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8
-% echo $::env(CTS_ROOT_BUFFER)
-sky130_fd_sc_hd__clkbuf_16
+<img width="960" alt="5 9" src="https://user-images.githubusercontent.com/64173714/215510847-d229a2f2-45fd-46cb-a9e2-f0057411f95c.png">
 
-read_lef /openLANE_flow/designs/picorv32a/runs/my_run1/tmp/merged.lef
-read_def /openLANE_flow/designs/picorv32a/runs/my_run1/results/cts/picorv32a.cts.def
-read_verilog /openLANE_flow/designs/picorv32a/runs/my_run1/results/synthesis/picorv32a.synthesis_cts.v
- read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
-report_checks -path_delay min_max -format full_clock_expanded -digits 4
-
-
+# Refrences
+* Kunal Ghosh - Co-founder of VSD 
+* Nickson Jose - Workshop Instructor OpenLANE-Sky130-Physical-Design-Workshop
