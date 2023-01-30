@@ -3,11 +3,15 @@
 During the [Advanced Physical Design workshop using OpenLANE and SKY130](https://www.vlsisystemdesign.com/advanced-physical-design-using-openlane-sky130/), I learned about the entire Physical Design process. This training focused on an RTL2GDSII flow using the open-source flow OpenLANE, with the [PICORV32A](https://github.com/YosysHQ/picorv32) RISC-V core design as an example. I learned about chip floorplanning, library cell design and characterization, pre-layout timing analysis, and the final steps of the RTL2GDSII flow.This repository contains all of the information and resources I have acquired during the workshop.
 
 # Table of Contents
-* [Tools Used](#tools-used)
-* [1 – Inception of open-source EDA, OpenLANE and Sky130 PDK](#1-inception-of-open-source-eda-openlane-and-sky130-pdk)
-   - [How to talk to computers](#)
+* Tools Used
+* 1 – Inception of open-source EDA, OpenLANE and Sky130 PDK
+   - How to talk to computers
+      - IC Terminologies
+      - Introduction to RISC-V
+      - Software applications to hardware
    - [SoC design and OpenLANE](#)
-   - [Starting RISC-V SoC Reference design](#)
+   - Simplified RTL to GDSII Flow
+       - About Openlane flow
    - [Get familiar to open-source EDA tools](#)
 * [2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells](#)
    - [Chip Floor planning considerations](#)
@@ -45,6 +49,9 @@ During the [Advanced Physical Design workshop using OpenLANE and SKY130](https:/
 <a name="1-inception-of-open-source-eda-openlane-and-sky130-pdk"></a>
 # 1 – Inception of open-source EDA, OpenLANE and Sky130 PDK 
 
+<a name="how-to-talk-computers-ic-terminologies"></a>
+## How to talk to computers 
+### IC Terminologies
 In RTL2GDS physical design, there are various terms encountered. A few key terms are:
 
 <img width="541" alt="1" src="https://user-images.githubusercontent.com/64173714/215434903-d1b261d0-044d-4649-9502-4dba67ab1fe4.png">
@@ -59,16 +66,20 @@ The core can have two types of blocks: Foundry IP blocks (e.g. ADC, DAC, PLL, SR
 
 <img width="535" alt="2" src="https://user-images.githubusercontent.com/64173714/215442738-27656f59-dc42-4fd5-8205-55c3e3e5c8c2.png">
 
+### Introduction to RISC-V
 RISC-V (Reduced Instruction Set Computing) is an open-source Instruction Set Architecture (ISA) for computer processors. RISC-V provides a clean and simple ISA, allowing for efficient implementations of processors, while also providing flexibility for custom extensions. The open-source nature of RISC-V allows for easy collaboration and customization, enabling the development of diverse, specialized processors for a wide range of applications. This has led to a growing number of companies and institutions adopting RISC-V for their processors, contributing to its growing popularity and success.
 
 
 ![IMG-8769](https://user-images.githubusercontent.com/64173714/215443267-3402518b-6809-4ca5-a753-1d2737d006da.jpg)
 
+### Software applications to hardware
 When we run a program on a computer, it goes through several steps to become executable by the hardware. Firstly, the program written in a high level language (such as C) is compiled into assembly language, which is a representation of the program in a language that is specific to the hardware. The assembly language is then converted into machine language, which consists of binary code that can be executed by the hardware.
 
 The system software, which includes the Operating System (OS), Compiler, and Assembler, plays a crucial role in executing the program. The OS handles low-level functions such as input/output operations and memory management. The compiler compiles the program into assembly language, and the assembler then converts the assembly language into machine language. 
 
 Finally, the binary code is executed on the chip layout. The interface between the chip layout and the machine language is achieved through RTL (register transfer level) code. This code provides a description of the digital logic that is used to implement the desired behavior in hardware.
+
+## SoC design and OpenLANE
 
 <img width="593" alt="3" src="https://user-images.githubusercontent.com/64173714/215445891-5f004c86-c8c8-4ba8-bdce-976a7e8f7f68.png">
 
@@ -77,6 +88,7 @@ To design a digital ASIC with open source, three open source components are need
 * EDA Tools (such as OpenROAD, OpenLANE, and QFlow), 
 * PDK (Process Design Kit) - The PDK is provided by Google and Skywater, and it is a 130nm Production PDK. The PDK acts as a bridge between the designer and the fab and contains important information such as cell libraries, IO libraries, and design rules (DRC, LVS, etc.).
 
+## Simplified RTL to GDSII Flow
 
 ![IMG-8761](https://user-images.githubusercontent.com/64173714/215446489-bdfd9f74-92c4-40db-bb70-744d06a18289.jpg)
 
@@ -88,10 +100,22 @@ In the process of digital ASIC design
 * Routing involves connecting cells together using horizontal and vertical wires. The router uses information from the PDK such as thickness, pitch, width, and vias for each metal layer, with Sky130 defining 6 routing layers for both global and detailed routing.
 * Before sign-off, verification is crucial and includes physical verification such as DRC and LVS, and timing verification. Design Rule Checking (DRC) ensures the final layout complies with all design rules, Layout versus Schematic (LVS) checks if the final layout matches the gate level netlist from the synthesis phase, and timing verification confirms that timing constraints are met.
 
+### About Openlane flow
 ![IMG-8762](https://user-images.githubusercontent.com/64173714/215446664-5d9da8cd-d538-4c7e-9585-98f393586e6d.jpg)
+OpenLANE is a flow that employs various open-source tools to design digital circuits from RTL to GDSII. It features the striVe family of open everything SoCs (Open PDK, Open EDA, Open RTL) and utilizes tools such as Yosys, OpenROAD, Magic, Netgen, and SPEF_Extraction. The flow has two modes of operation: Autonomous and Interactive, and is specifically optimized for the SKYWater 130nm open PDK.
+
+The flow starts with RTL synthesis, where the RTL code is processed by Yosys and translated into a logic circuit using generic components. The circuit can then be optimized and mapped to a standard cell library using the ABC tool, guided by various ABC scripts that implement different synthesis strategies.
+
+OpenLANE also includes design exploration utilities that allow the designer to test different configurations of the design and generate reports that show the number of layout violations. The flow also includes Static Timing Analysis performed by OpenSTA, as well as optional testing steps such as DFT (Scan Insertion, ATPG, Test Pattern Compaction, Fault Coverage, and Fault Simulation).
+
+The physical implementation phase is handled by the OpenROAD application, which performs PnR (FP+PP, Placement, Optimization, CTS, and Routing). The TritonRoute tool is used for detailed routing, and a Logic Equivalence Check (LEC) is performed to ensure the optimized circuit still has equivalent functionality. The fake antenna insertion step is also included to address antenna rule violations, with the Magic tool being used for antenna checking and NetGen for circuit extraction.
+
+Finally, the sign-off stage includes STA, DRC, and LVS, with interconnect RC extraction and further STA performed by OpenSTA, and DRC and LVS performed by the Magic tool.
 
 <a name="about-google-skywater-pdk"></a>
-lLabs
+
+## Get familiar to open-source EDA tools
+
 * Getting starting with working directory and openlane
 ` cd work/tools/openlane_working_dir/openlane/ `
 * to invoke the tool type `docker` to start the docker containter
@@ -115,8 +139,6 @@ lLabs
 * checking whether a merged file is created in the folder
 
 <img width="960" alt="1 4 3" src="https://user-images.githubusercontent.com/64173714/214946115-dff3b1f8-dee3-4e51-b5ba-3365aac25eef.png">
-
-1.5.1 - edit
 
 * Run the synthesis `run_synthesis`
 
