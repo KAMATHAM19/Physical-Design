@@ -9,29 +9,29 @@ During the [Advanced Physical Design workshop using OpenLANE and SKY130](https:/
       - IC Terminologies
       - Introduction to RISC-V
       - Software applications to hardware
-   - [SoC design and OpenLANE](#)
+   - SoC design and OpenLANE
    - Simplified RTL to GDSII Flow
        - About Openlane flow
-   - [Get familiar to open-source EDA tools](#)
-* [2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells](#)
-   - [Chip Floor planning considerations](#)
-   - [Library Binding and Placement](#)
-   - [Cell design and characterization flows](#)
-   - [General timing characterization parameters](#)
-* [3 - Design and characterize one library cell using Magic Layout tool and ngspice](#)
-   - [Labs for CMOS inverter ngspice simulations](#)
-   - [Inception of Layout – CMOS fabrication process](#)
-   - [Sky130 Tech File Labs](#)
-* [4 - Pre-layout timing analysis and importance of good clock tree](#)
-    - [Timing modelling using delay tables](#)
-    - [Timing analysis with ideal clocks using openSTA](#)
-    - [Clock tree synthesis TritonCTS and signal integrity](#)
-    - [Timing analysis with real clocks using openSTA](#)
-* [5 - Final steps for RTL2GDS](#)
-    - [Routing and design rule check (DRC)](#)
-    - [PNR interactive flow tutorial](#)
-* [Refrences](#)
-* [Acknowledgement](#)
+   - Get familiar to open-source EDA tools
+* 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
+   - Chip Floor planning considerations
+   - Library Binding and Placement
+   - Cell design and characterization flows
+   - General timing characterization parameters
+* 3 - Design and characterize one library cell using Magic Layout tool and ngspice
+   - Labs for CMOS inverter ngspice simulations
+   - Inception of Layout – CMOS fabrication process
+   - Sky130 Tech File Labs
+* 4 - Pre-layout timing analysis and importance of good clock tree
+    - Timing modelling using delay tables
+    - Timing analysis with ideal clocks using openSTA
+    - Clock tree synthesis TritonCTS and signal integrity
+    - Timing analysis with real clocks using openSTA
+* 5 - Final steps for RTL2GDS
+    - Routing and design rule check (DRC)
+    -  PNR interactive flow tutorial
+* Refrences
+* Acknowledgement
 
 <a name="tools-used"></a>
 # Tools Used
@@ -149,33 +149,40 @@ Finally, the sign-off stage includes STA, DRC, and LVS, with interconnect RC ext
 <img width="960" alt="1 5 1" src="https://user-images.githubusercontent.com/64173714/215454952-d39c22e8-8706-4853-8c1d-c35dd94a9e04.png">
 
 * To calculate the flop ratio 
- ``` flop ration = no of d flip flops/total no of cells = 1613/18036 = 0.089 = 89% 
- ```
+ ` flop ration = no of d flip flops/total no of cells = 1613/18036 = 0.089 = 89% `
+ 
  
 <a name="about-google-skywater-pdk"></a>
 # 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
 
-command
+### LABS 
+* floorplan in openlane `run_floorplan`
+
 <img width="953" alt="2 1" src="https://user-images.githubusercontent.com/64173714/215262087-ce4be0c1-be55-4835-9bb3-f12ae759249d.png">
 
+The `picorv32a.floorplan.def` file was generated in the `./results/floorplan` directory by this command.
+
+* We use the Magic tool to view the floorplan, and we need three files to do so:
+   * Magic Tech file : sky130A.tech
+   * LEF file : merged.lef
+   * Def file of floorplan : picorv32a.floorplan.def
 
 ```
  magic -T <location of techfile> lef read <loction of lef file> def read <location of floorplan def file>
  ```
-
 ```
 ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/27-01_19-20/results/floorplan$
-
 magic -T /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
-
 ```
+The above command can be used to view the floorplan in the Magic tool.
 
 <img width="959" alt="magic" src="https://user-images.githubusercontent.com/64173714/215261151-64df2adf-2cbd-45a1-8988-626328ad414e.png">
 
-command
+* placement in openlane `run_placement`
+
 <img width="960" alt="p1" src="https://user-images.githubusercontent.com/64173714/215262016-617f0a68-ae1b-4670-8428-8e6e46931cc3.png">
 
-
+The `picorv32a.placement.def` file was generated in the `./results/placement` directory by this command.
 ```
  magic -T <location of techfile> lef read <loction of lef file> def read <location of placement def file>
  
@@ -183,52 +190,78 @@ command
 
 ```
 ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/27-01_19-20/results/placement$
-
 magic -T /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 
 ```
 
 <img width="956" alt="placement" src="https://user-images.githubusercontent.com/64173714/215261639-6099a3f9-0480-434b-ae2f-da66f1ac7be9.png">
 
+### Standard Cell Design
+The typical standard cell design flow consists of 3 elements :
+1. Inputs - PDKs , DRC & LVS rules, SPICE models, library & user-defined specs
+2. Design Steps - Circuit design, layout design, characterization
+3. Outputs - CDL(circuit description lanuage), GDSII, LEF, extracted spice netlist(.crc)
 <a name="about-google-skywater-pdk"></a>
 # 3 - Design and characterize one library cell using Magic Layout tool and ngspice
 
-L0 - ioPlacer - to changes I/O pins and place around the core
+### Labs
+#### ioPlacer - to changes I/O pins and place around the core
 
 ```
 % set ::env(FP_IO_MODE) 2
 2
 % run_floorplan
 ```
-
+To see how I/O pins are aligned after changing the value in ioPlacer 
 
 <img width="960" alt="reset" src="https://user-images.githubusercontent.com/64173714/215265586-4619331d-3f95-4573-9765-2c9d07226e55.png">
 
+Spice Simulations (Pre-Layout)
+The spice simulations mainly consist of :
+1. Spice deck - component connectivity, component values, identify nodes, name nodes
+2. NGspice introduction
+3. Static behaviour evaluation 
+
+## SPICE simulation lab for CMOS inverter
+
+* At first we need to git clone the standard cells and command is :
 ```
 git clone https://github.com/nickson-jose/vsdstdcelldesign.git
 
 ```
-cp sky130A.tech /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/
-
- magic -T sky130A.tech sky130_inv.mag &
-
-
+* After cloning the repo, navigate to the vsdstdcelldesign directory and use magic to view the sky130_inv.mag file.
+* Before opening we need magic tech file and copy the tech file in vsdstdcelldesign directority
+```
+     cp sky130A.tech /home/venkykamatham1998/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign/
+```
+ * To view the layout use this command 
+ ```
+     magic -T sky130A.tech sky130_inv.mag &
+```
 <img width="956" alt="image" src="https://user-images.githubusercontent.com/64173714/215268906-9ec922be-924e-447f-8758-a8d5eb418157.png">
 
-16 mask process 
-``` [](https://www.vlsisystemdesign.com/wp-content/uploads/2017/07/16-mask-process.pdf)  ```
+16 mask CMOS fabrication process  
+``` 
+https://www.vlsisystemdesign.com/wp-content/uploads/2017/07/16-mask-process.pdf
 
-
+```
+* To view the layout press `s` for select, `z` for zoom and in `tkconl` type what cammand to see the mask layers 
 
 <img width="959" alt="3 3" src="https://user-images.githubusercontent.com/64173714/215276740-9f6fd45c-da8c-476c-a30d-2a38baef0d08.png">
 
-
+* We should extract the parasitics and characterise the design. We open the tkcon window and execute the following commands:
+```
+extract all
+ext2spice cthresh 0 rthresh 0
+ext2spice
+```
+The extracted file 
 
 <img width="960" alt="3 4" src="https://user-images.githubusercontent.com/64173714/215278218-907c745b-a97a-4d7c-add9-a114193a6694.png">
 
 <img width="960" alt="spice 1" src="https://user-images.githubusercontent.com/64173714/215278228-8ab8f44d-e61c-4da2-8699-f3011548a675.png">
 
-
+We then modify the spice file so that we can plot a transient response:
 ```
 * SPICE3 file created from sky130_inv.ext - technology: sky130A
 
@@ -260,8 +293,12 @@ run
 .endc
 .end
 ```
+* Open the spice file by typing `ngspice sky130A_inv.spice` 
+* Generate a graph using `plot y vs time a` 
+
 <img width="960" alt="3 0" src="https://user-images.githubusercontent.com/64173714/215286609-f27e665b-6d2e-4769-bbc8-1af19275347c.png">
 
+Using this transient response, we will now characterise the cell's slew rate and propagation delay
 
 <img width="960" alt="t" src="https://user-images.githubusercontent.com/64173714/215286642-0a0bdfcf-2078-4b72-9234-6d7afe3d4a7e.png">
 
