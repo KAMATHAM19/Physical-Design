@@ -3,7 +3,7 @@
 During the [Advanced Physical Design workshop using OpenLANE and SKY130](https://www.vlsisystemdesign.com/advanced-physical-design-using-openlane-sky130/), I learned about the entire Physical Design process. This training focused on an RTL2GDSII flow using the open-source flow OpenLANE, with the [PICORV32A](https://github.com/YosysHQ/picorv32) RISC-V core design as an example. I learned about chip floorplanning, library cell design and characterization, pre-layout timing analysis, and the final steps of the RTL2GDSII flow.This repository contains all of the information and resources I have acquired during the workshop.
 
 # Table of Contents
-* Tools Used
+* [Tools Used](#tools-used)
 * 1 – Inception of open-source EDA, OpenLANE and Sky130 PDK
    - How to talk to computers
       - IC Terminologies
