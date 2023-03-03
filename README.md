@@ -4,7 +4,7 @@ During the [Advanced Physical Design workshop using OpenLANE and SKY130](https:/
 
 # Table of Contents
 * [Tools Used](#tools-used)
-* 1 – Inception of open-source EDA, OpenLANE and Sky130 PDK
+* [1 – Inception of open-source EDA, OpenLANE and Sky130 PDK](#1-inception-of-open-source-eda-openlane-and-sky130-pdk)
    - How to talk to computers
       - IC Terminologies
       - Introduction to RISC-V
@@ -13,12 +13,12 @@ During the [Advanced Physical Design workshop using OpenLANE and SKY130](https:/
    - Simplified RTL to GDSII Flow
        - About Openlane flow
    - Get familiar to open-source EDA tools
-* 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
+* [2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells](#2-understand-importance-of-good-floorplan-vs-bad-floorplan-and-introduction-to-library-cells)
    - Chip Floor planning considerations
    - Library Binding and Placement
    - Cell design and characterization flows
    - General timing characterization parameters
-* 3 - Design and characterize one library cell using Magic Layout tool and ngspice
+* [3 - Design and characterize one library cell using Magic Layout tool and ngspice](#3-design-and-characterize-one-library-cell-using-magic-layout-tool-and-ngspice)
    - Labs for CMOS inverter ngspice simulations
    - Inception of Layout – CMOS fabrication process
    - Sky130 Tech File Labs
@@ -151,7 +151,7 @@ Finally, the sign-off stage includes STA, DRC, and LVS, with interconnect RC ext
  ` flop ration = no of d flip flops/total no of cells = 1613/18036 = 0.089 = 89% `
  
  
-<a name="about-google-skywater-pdk"></a>
+<a name="2-understand-importance-of-good-floorplan-vs-bad-floorplan-and-introduction-to-library-cells"></a>
 # 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
 
 ### LABS 
@@ -200,7 +200,8 @@ The typical standard cell design flow consists of 3 elements :
 1. Inputs - PDKs , DRC & LVS rules, SPICE models, library & user-defined specs
 2. Design Steps - Circuit design, layout design, characterization
 3. Outputs - CDL(circuit description lanuage), GDSII, LEF, extracted spice netlist(.crc)
-<a name="about-google-skywater-pdk"></a>
+
+<a name="3-design-and-characterize-one-library-cell-using-magic-layout-tool-and-ngspice"></a>
 # 3 - Design and characterize one library cell using Magic Layout tool and ngspice
 
 ### Labs
